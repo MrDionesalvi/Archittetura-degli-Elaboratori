@@ -16,7 +16,7 @@ TOP:    ble t0, zero, END
 	addi t2, t2, 1
 NOUNO:
 	srli t0, t0, 1
-	beq zero, zero, TOP
+	j TOP
 END: 
 
 print:

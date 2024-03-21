@@ -12,10 +12,10 @@ _start:
 	
 TOP:    ble t0, zero, END
 	add t1, t2, t3
-	add t2, t3, zero
+	add t2, t3, zero 
 	add t3, t1, zero
 	addi t0, t0, -1
-	beq zero, zero, TOP
+	j TOP
 END: 
 
 print:

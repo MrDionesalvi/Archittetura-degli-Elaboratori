@@ -5,7 +5,7 @@
 .text
 
 _start:
-	li t0, 0 # x
+	li t0, 3 # x
 	li t1, 6 # y
 	
 	# x = (x - 2) + y
@@ -14,7 +14,7 @@ _start:
 	
 	bge t0, t1, ELSE
 	addi t0, t0, 1
-	beq zero, zero, ENDIF
+	j ENDIF
 ELSE:	addi t1, t1, 1
 ENDIF: 
 

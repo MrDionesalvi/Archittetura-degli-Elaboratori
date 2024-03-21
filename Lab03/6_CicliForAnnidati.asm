@@ -19,10 +19,10 @@ J:	bge t4, t1, FEND
 	add t2, t5, t3 # R = (2*R) + i
 	add t2, t2, t4 # R = (2*R) + i + j
 	addi t4, t4, 1
-	beq zero, zero, J
+	j J
 FEND:
 	addi t3, t3, 1
-	beq zero, zero, TOP
+	j TOP
 END: 
 
 print:

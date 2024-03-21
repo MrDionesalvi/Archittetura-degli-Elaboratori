@@ -15,7 +15,7 @@ TOP:    bgt t2, t0, END
 	mul t3, t3, t3
 	add t1, t1, t3
 	addi t2, t2, 1
-	beq zero, zero, TOP
+	j TOP
 END: 
 
 print:
