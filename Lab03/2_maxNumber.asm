@@ -5,20 +5,16 @@
 .text
 
 _start:
-	li t0, 50
-	li t1, 40
-	li t2, 30
+	li t0, 2
+	li t1, 1
+	li t2, 99
 	
-	ble t0, t1, SECOND 
-	ble t0, t2, FIRST
-	add t3, t0, zero # max = t0
-	beq zero, zero, END
-FIRST:  add t3, t1, zero # max = t1
-	beq zero, zero, END
-SECOND: ble t1, t2, THIRD
-	add t3, t1, zero # max = t1
-	beq zero, zero, END
-THIRD: 	add t3, t2, zero # max = t2
+	add t3, t0, zero
+	
+	bgt t3, t1, THEN
+	add t3, t1, zero
+THEN:	bgt t3, t2, END
+	add t3, t2, zero
 	
 END: 
 print:
