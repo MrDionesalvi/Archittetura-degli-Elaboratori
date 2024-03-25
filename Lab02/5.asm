@@ -2,10 +2,10 @@
 .globl _start
 
 .data
-    v1: .word 0x5f
-    v2: .word 0xabc
-    v3: .word 0xc
-    v4: .word 0xf0
+    v1: .word 4
+    v2: .word 4
+    v3: .word 4
+    v4: .word 4
     v5: .word 0
     NUM_VALUES: .word 4
 .text
@@ -24,6 +24,11 @@ _start:
     add x10, x10, t4
     
     div t5, x10, t6
+    rem x11, x10, t6
+    
+    beq x11, zero, END
+    addi t5, t5, 1
+END:
     sw t5, 16(t0)
 
 print:
