@@ -14,16 +14,19 @@ _start:
     lw   t4, 12(t0)
     lw   t5, 16(t0)	# RESULT
     addi t6, zero, 4
-    
+
     add x10, t1, t2
     add x10, x10, t3
     add x10, x10, t4
-    
+
     div t5, x10, t6
     rem a1, x10, t6
 
     sw t5, 16(t0)
-    
+    beq a1, zero, END
+    bgt a1, zero, END
+    addi t5, t5, -1
+    END:
 	
 print:
         addi  a0, a1, 0    	 # print the result
