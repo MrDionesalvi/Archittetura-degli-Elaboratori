@@ -10,7 +10,7 @@ _start:
 	li t2, 0 # Counter
 
 	
-TOP:    ble t0, zero, END
+TOP:    beq t0, zero, END
 	and t3, t0, t1
 	bne t3, t1, NOUNO
 	addi t2, t2, 1
