@@ -1,7 +1,7 @@
 .globl _start
 .data
-    size:  .word 8
-    array: .word 1,5,3,7,2,6,4,8
+    size:  .word 2
+    array: .word 1,5
 .text
 _start:
     # chiama invert
@@ -17,24 +17,33 @@ _start:
 #***************************************************
 # completare la funzione invert nel campo di invert
 swap:
-	li t0, 8
+	li t0, 4
 	mul t1, t0, a1
 	mul t2, t0, a2
 	
 	add t1, t1, a0
 	add t2, t2, a0
 	
-	ld t3, 0(t1)
-	ld t4, 0(t2)
+	lw t3, 0(t1)
+	lw t4, 0(t2)
 	
-	sd t4, 0(t2)
-	sd t3, 0(t1)
+	sw t3, 0(t2)
+	sw t4, 0(t1)
+	
+	li t0, 0
+	li t1, 0
+	li t2, 0
+	li t3, 0
+	li t4, 0
+	li t5, 0
+	li t6, 0
+	
+	jr ra
 
 invert:
 	li t0, 0 # i
-	add t1, zero, a1 # size da dividere a met√†
+	add t1, zero, a1 # size da dividere a met‡†
 	add t2, zero, a1 # size intatto 
-	add t6, zero, ra # ra intatto
 	srli t1, t1, 1
 	
 TOP:
@@ -44,9 +53,19 @@ TOP:
 	sub t3, t3, t0  # t3 = size - 1 - i
 	add a1, zero, t0
 	add a2, zero, t3
+	addi sp, sp, -16
+	sw t0, 0(sp)  # i
+	sw t1, 4(sp)  # uscita ciclo
+	sw t2, 8(sp) # size intatto
+	sw ra, 12(sp) # ra
 	jal ra, swap
 	###
-	add ra, zero, t6
+	lw t0, 0(sp)  # i
+	lw t1, 4(sp)  # uscita ciclo
+	lw t2, 8(sp) # size intatto
+	lw ra, 12(sp) # ra
+	addi sp, sp, 16
+	
 	addi t0, t0, 1
 	j TOP
 
