@@ -1,3 +1,4 @@
+[![wakatime](https://wakatime.com/badge/github/MrDionesalvi/Archittetura-degli-Elaboratori.svg)](https://wakatime.com/badge/github/MrDionesalvi/Archittetura-degli-Elaboratori)
 # Architettura degli Elaboratori - UniTo
 
 Benvenuti nella repo del corso di Architettura degli Elaboratori del primo anno di informatica all'Università di Torino! 🎉
