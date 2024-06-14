@@ -1,6 +1,6 @@
 .globl _start
     .data
-        array: .word 1,2,3,4,5,4,3,2,1
+        array: .word 1,2,3,4,5,4,3,2,2
         size:  .word 9
         
     .text
@@ -14,7 +14,28 @@
         #exit
         li   a7, 10
         ecall
-    
+
+#########
+equal:
+    	li t0, 4
+    	li t1, 1
+    	li t2, 1
+    	
+    	mul t1, t0, a1
+    	mul t2, t0, a2 
+    	
+    	add t1, a0, t1
+    	add t2, a0, t2
+    	lw t1, 0(t1)
+    	lw t2, 0(t2)
+    	
+    	beq t1, t2, END
+    	addi a0, zero, 0
+    	jr ra
+    	
+END:
+	addi a0, zero, 1
+	jr ra    
     #*********************************************************
     # completare la funzione palindrome nel campo di sotto
 palindrome:
@@ -32,10 +53,10 @@ palindrome:
 	sd s2, 40(sp)
 
 TOP:	
-	bge s0, s1, END
+	bge s0, s1, FINE
 	mv a1, s0
 	mv a2, s1
-	jal ra, TOP
+	jal ra, equal
 	mv t0, a0
 	
 	ld a0, 0(sp)
@@ -55,7 +76,7 @@ TOP:
 	
 	j TOP
 
-END:
+FINE:
 	ld ra, 16(sp)
 	addi sp, sp, 48
 	mv a0, s2
